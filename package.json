@@ -1,0 +1,14 @@
+{
+  "name": "ap-simulator",
+  "version": "0.1.0",
+  "description": "Accounts Payable simulator REST API with JSON logging and JSON DB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2",
+    "logger": "^0.0.1"
+  }
+}

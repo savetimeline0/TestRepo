@@ -1,0 +1,24 @@
+{"level":"info","timestamp":"2026-05-16T09:17:24.666Z","event":"startup","message":"Server running on port 3000"}
+{"level":"info","timestamp":"2026-05-16T09:29:20.036Z","event":"request","method":"GET","url":"/api/ap/invoices","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:29:31.335Z","event":"request","method":"GET","url":"/api/ap/invoices/","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:29:46.806Z","event":"request","method":"POST","url":"/api/ap/invoices","body":{"vendor":"ACME Corp","amount":1234.56,"dueDate":"2026-06-01"}}
+{"level":"info","timestamp":"2026-05-16T09:30:04.193Z","event":"request","method":"PUT","url":"/api/ap/invoices/","body":{"amount":1500}}
+{"level":"info","timestamp":"2026-05-16T09:30:14.913Z","event":"request","method":"POST","url":"/api/ap/invoices//pay","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:30:59.049Z","event":"request","method":"DELETE","url":"/api/ap/invoices/","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:31:11.040Z","event":"request","method":"GET","url":"/api/ap/invoices","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:31:39.442Z","event":"request","method":"GET","url":"/api/ap/invoices/","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:32:22.729Z","event":"request","method":"POST","url":"/api/ap/invoices","body":{"vendor":"ACME Corp","amount":1234.56,"dueDate":"2026-06-01"}}
+{"level":"info","timestamp":"2026-05-16T09:32:29.907Z","event":"request","method":"POST","url":"/api/ap/invoices","body":{"vendor":"ACME Corp","amount":1234.56,"dueDate":"2026-06-01"}}
+{"level":"info","timestamp":"2026-05-16T09:32:38.003Z","event":"request","method":"GET","url":"/api/ap/invoices","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:32:47.705Z","event":"request","method":"GET","url":"/api/ap/invoices/","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:32:54.184Z","event":"request","method":"PUT","url":"/api/ap/invoices/","body":{"amount":1500}}
+{"level":"info","timestamp":"2026-05-16T09:33:49.643Z","event":"request","method":"PUT","url":"/api/ap/invoices/0e05aac7-5f52-47a7-b619-74c225cfcf79","body":{"amount":1500}}
+{"level":"info","timestamp":"2026-05-16T09:33:58.737Z","event":"request","method":"PUT","url":"/api/ap/invoices/0e05aac7-5f52-47a7-b619-74c225cfcf79","body":{"amount":30000}}
+{"level":"info","timestamp":"2026-05-16T09:34:25.177Z","event":"request","method":"POST","url":"/api/ap/invoices/0e05aac7-5f52-47a7-b619-74c225cfcf79/pay","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:34:31.620Z","event":"request","method":"GET","url":"/api/ap/invoices","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:39:04.067Z","event":"request","method":"DELETE","url":"/api/ap/invoices/0e05aac7-5f52-47a7-b619-74c225cfcf79","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:39:11.291Z","event":"request","method":"GET","url":"/api/ap/invoices","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:39:15.953Z","event":"request","method":"GET","url":"/api/ap/invoices/","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:39:45.379Z","event":"request","method":"DELETE","url":"/api/ap/invoices/0e05aac7-5f52-47a7-b619-74c225cfcf79","body":{}}
+{"level":"info","timestamp":"2026-05-16T09:47:02.479Z","event":"startup","message":"Server running on port 3000"}
+{"level":"info","timestamp":"2026-05-16T09:47:55.315Z","event":"request","method":"POST","url":"/api/ap/invoices","body":{"invoiceNumber":"INV-2026-002","invoiceDate":"2026-05-16","dueDate":"2026-06-16","header":{"vendorName":"Tech Solutions Inc","vendorEmail":"billing@techsolutions.com"},"lines":[{"description":"Software","quantity":1,"unitPrice":5000},{"description":"Support","quantity":50,"unitPrice":200}],"summary":{"taxRate":0.08}}}

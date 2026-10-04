@@ -1,0 +1,924 @@
+{
+    "type":"object",
+    "properties":{
+        "AccountCodingStatus":{
+            "maxLength":80,
+            "type":"string",
+            "description":"This value indicates the routing status of the invoice. The invoice can be in the process of routing or complete.",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "AccountingDate":{
+            "type":"string",
+            "description":"The accounting date captured on the invoice that is finally used to default to invoice lines and distributions. The value can either be provided while creating the invoice or derived based on the Accounting Date Basis option on the Manage Invoice Options for the invoicing business unit.",
+            "format":"date",
+            "nullable":false,
+            "x-queryable":true
+        },
+        "AccountingStatus":{
+            "title":"Accounting Status",
+            "maxLength":255,
+            "type":"string",
+            "description":"An indicator to show the state of account creation for a given invoice. The default value is set to Unaccounted.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "AmountPaid":{
+            "title":"Amount Paid",
+            "type":"number",
+            "description":"The amount paid for the invoice.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "ApplyAfterDate":{
+            "title":"Apply After Date",
+            "type":"string",
+            "description":"The date associated with a prepayment invoice after which you can apply the prepayment against invoices. It is only used for temporary prepayments. The column is null for permanent prepayments and other invoice types. The value can either be provided while creating an invoice or derived based on the Prepayment Settlement Days setup in the Manage Invoice Options for the invoicing business unit.",
+            "format":"date",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "ApprovalStatus":{
+            "title":"Approval Status",
+            "maxLength":80,
+            "type":"string",
+            "description":"The status indicating the state of the invoice in the approval process.",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "BankAccount":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The supplier bank account number to which the payment will be remitted. The value can either be provided while creating an invoice or populated by default from the Supplier Site, Address, or Profile-level payment attributes.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "BankChargeBearer":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The bearer of bank charge cost. A list of accepted values is defined in the lookup type IBY_BANK_CHARGE_BEARER. Accepted values can be reviewed using the Setup and Maintenance work area and the Manage Standard Lookups task.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice"
+            },
+            "x-queryable":true
+        },
+        "BaseAmount":{
+            "type":"number",
+            "description":"The invoice amount in the ledger currency.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "BudgetDate":{
+            "type":"string",
+            "description":"Budgetary Calendar Period Date applicable for funds check.",
+            "format":"date",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "BusinessUnit":{
+            "title":"Business Unit",
+            "maxLength":240,
+            "type":"string",
+            "description":"Indicates the business unit name for the invoice. The value can either be provided while creating an invoice or populated by default from the profile option DEFAULT_ORG_ID. It cannot be updated once the invoice is created.",
+            "nullable":false,
+            "x-hints":{
+                "controlType":"choice"
+            },
+            "x-queryable":true
+        },
+        "CanceledBy":{
+            "title":"Canceled By",
+            "maxLength":64,
+            "type":"string",
+            "description":"The user who canceled an invoice.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "CanceledDate":{
+            "title":"Canceled Date",
+            "type":"string",
+            "description":"The date when the invoice was canceled.",
+            "format":"date",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "CanceledFlag":{
+            "title":"Canceled",
+            "maxLength":255,
+            "type":"boolean",
+            "description":"Indicates if the invoice has been canceled. The default value is false. If the value if true, then it indicates the invoice is canceled.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "ControlAmount":{
+            "title":"Control Amount",
+            "type":"number",
+            "description":"The user-enterable value to ensure that the calculated tax will be the same as on the physical document.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "ConversionDate":{
+            "title":"Conversion Date",
+            "type":"string",
+            "description":"The date when a conversion rate is used to convert an amount into another currency for an invoice. It is a mandatory attribute for non functional currency invoices. The value can either be provided while creating the invoice or populated by default from the accounting date of the invoice.",
+            "format":"date",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "ConversionRate":{
+            "title":"Conversion Rate",
+            "type":"number",
+            "description":"The conversion rate at which the principal unit of one currency is converted into another currency for an invoice. It is a mandatory attribute for non functional currency invoices, which is based on the Require conversion rate entry option in the Manage Common Options for Payables and Procurement options for the invoicing business unit. The value can either be provided while creating the invoice or populated by default from the Manage Daily Rates for the conversion rate type and date, or can be updated later using the Apply Missing Conversion Rates process.",
+            "nullable":true,
+            "x-hints":{
+                "dependencies":[
+                    "ExchangeRateType"
+                ]
+            },
+            "x-queryable":true
+        },
+        "ConversionRateType":{
+            "title":"Conversion Rate Type",
+            "maxLength":30,
+            "type":"string",
+            "description":"The source of currency conversion rate for an invoice. Examples include corporate, user-defined, and spot. It is a mandatory attribute for non functional currency invoices, which is based on the Require conversion rate entry option in the Manage Common Options for Payables and Procurement options for the invoicing business unit. The value can either be provided while creating an invoice or populated by default from the Conversion Rate Type from the Manage Common Options for Payables and Procurement options for the invoicing business unit.",
+            "nullable":true,
+            "x-hints":{
+                "help":{
+                    "instruction":"Conversion Rate Type"
+                },
+                "controlType":"choice"
+            },
+            "x-queryable":true
+        },
+        "CreatedBy":{
+            "title":"Created By",
+            "maxLength":64,
+            "type":"string",
+            "description":"The user who created the record.",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "CreationDate":{
+            "title":"Creation Date",
+            "type":"string",
+            "description":"The date when the record was created.",
+            "format":"date-time",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "DeliveryChannel":{
+            "title":"Name",
+            "maxLength":80,
+            "type":"string",
+            "description":"The text on electronic payment that instructs the bank about the execution of payment. For example, print a check and hold it for collection by the payee. The value can either be provided while creating the invoice or populated by default from the Supplier Site or Address or Profile level payment attributes.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice",
+                "dependencies":[
+                    "DeliveryChannelCode"
+                ]
+            },
+            "x-queryable":true
+        },
+        "DeliveryChannelCode":{
+            "title":"Delivery Channel",
+            "maxLength":30,
+            "type":"string",
+            "description":"The delivery channel code entered by the user that helps to uniquely identify a delivery channel.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "Description":{
+            "title":"Description",
+            "maxLength":240,
+            "type":"string",
+            "description":"The statement that describes the invoice.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "DigitalPaymentAccount":{
+            "maxLength":150,
+            "type":"string",
+            "description":"Indicates the digital account used to remit the payment. The value can be specified manually when creating the invoice or derived by default from the Supplier Site configuration.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "DocumentCategory":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The sequential numbering document category. The attribute is mandatory, which is based on the Sequencing setup at Specify Ledger Options for the ledger associated to the invoicing business unit.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice",
+                "PAYLOADHINT":"Show",
+                "dependencies":[
+                    "DocumentCategoryName"
+                ]
+            },
+            "x-queryable":true
+        },
+        "DocumentFiscalClassificationCodePath":{
+            "title":"Document Fiscal Classification",
+            "maxLength":240,
+            "type":"string",
+            "description":"The classification of transactions that require special documentation to accompany them as designated by the tax authority. For example, international transactions often require proof of export documentation to support the sale or transfer of goods. A document fiscal classification code can be created to confirm receipt of the export documents. When passing the attribute value in the payload, ensure that the document fiscal classification code path is passed.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "DocumentSequence":{
+            "title":"Voucher Number",
+            "type":"integer",
+            "description":"The manual sequence number when document sequential numbering is enabled. The attribute is mandatory, which is based on the Sequencing setup at the Specify Ledger Options for the ledger associated to the invoicing business unit.",
+            "nullable":true,
+            "x-hints":{
+                "PAYLOADHINT":"Show"
+            },
+            "x-queryable":true
+        },
+        "ExternalBankAccountId":{
+            "type":"integer",
+            "description":"The unique identifier for the supplier bank account. The value can either be provided while creating an invoice or populated by default from the Supplier Site, Address, or Profile-level payment attributes. If you provide values for multiple bank account-related attributes, such as Bank Account, Supplier IBAN, or External Bank Account ID, then all the information provided is validated.",
+            "format":"int64",
+            "nullable":true,
+            "x-hints":{
+                "precision":18
+            },
+            "x-queryable":true
+        },
+        "FirstPartyTaxRegistrationId":{
+            "title":"First-Party Tax Registration Number",
+            "type":"integer",
+            "description":"The unique first party tax registration identifier.",
+            "format":"int64",
+            "nullable":true,
+            "x-hints":{
+                "precision":18
+            },
+            "x-queryable":true
+        },
+        "FirstPartyTaxRegistrationNumber":{
+            "title":"Registration Number",
+            "maxLength":50,
+            "type":"string",
+            "description":"The first party tax registration number. The value can either be provided while creating an invoice or populated by default from the first party legal establishment. You can also update the value for the first-party tax registration number.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice",
+                "dependencies":[
+                    "FirstPartyTaxRegistrationId"
+                ]
+            },
+            "x-queryable":true
+        },
+        "FundsStatus":{
+            "title":"Meaning",
+            "maxLength":80,
+            "type":"string",
+            "description":"Indicator to check and reserve funds for the invoice.",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "GoodsReceivedDate":{
+            "type":"string",
+            "description":"The date when the goods were received. This date can be used to calculate the invoice payment due date. The value can either be provided while creating the invoice or populated by default to the system date.",
+            "format":"date",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "ImageDocumentNumber":{
+            "maxLength":50,
+            "type":"string",
+            "description":"The unique image document number associated with the invoice. For internal use only.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "InvoiceAmount":{
+            "title":"Amount",
+            "type":"number",
+            "description":"The invoice amount in transaction currency. The value must be provided while creating an invoice.",
+            "nullable":false,
+            "x-queryable":true
+        },
+        "InvoiceCurrency":{
+            "title":"Invoice Currency",
+            "maxLength":15,
+            "type":"string",
+            "description":"The currency code used on the invoice. The value can either be provided while creating an invoice or populated by default from the Supplier Site or from the Manage Invoice Options for the invoicing business unit.",
+            "nullable":false,
+            "x-queryable":true
+        },
+        "InvoiceDate":{
+            "title":"Invoice Date",
+            "type":"string",
+            "description":"The date on the supplier invoice. The value can either be provided while creating an invoice or populated by default to the system date.",
+            "format":"date",
+            "nullable":false,
+            "x-queryable":true
+        },
+        "InvoiceGroup":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The unique name of the invoice group assigned to a group of invoices used for reporting and payment purposes. It is a mandatory attribute, which is based on the Require invoice grouping option in the Manage Invoice Options for the invoicing business unit.",
+            "nullable":true,
+            "x-hints":{
+                "dependencies":[
+                    "BatchName"
+                ]
+            },
+            "x-queryable":true
+        },
+        "InvoiceId":{
+            "title":"Invoice ID",
+            "type":"integer",
+            "description":"The unique invoice identifier that is generated while creating an invoice.",
+            "format":"int64",
+            "nullable":false,
+            "readOnly":true,
+            "x-hints":{
+                "precision":18,
+                "fnd:GLOBALLY_UNIQUE":"true"
+            },
+            "x-queryable":true
+        },
+        "InvoiceNumber":{
+            "title":"Invoice Number",
+            "maxLength":50,
+            "type":"string",
+            "description":"The unique number for supplier invoice.",
+            "nullable":false,
+            "x-queryable":true
+        },
+        "InvoiceReceivedDate":{
+            "title":"Invoice Received Date",
+            "type":"string",
+            "description":"The date when the invoice was received. This date can be used to calculate the invoice payment due date. The value can either be provided while creating the invoice or populated by default to the system date.",
+            "format":"date",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "InvoiceSource":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The source that indicates the feeder system from which an invoice is created. The valid values are Spreadsheet, External, or any user-defined source in the lookup type SOURCE and can be reviewed using the Setup and Maintenance work area, and the Manage Payables Lookups task. The value can either be provided while creating the invoice or populated by default to External.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice",
+                "dependencies":[
+                    "InvoiceSource1"
+                ]
+            },
+            "x-queryable":true
+        },
+        "InvoiceSourceCode":{
+            "title":"Invoice Source",
+            "maxLength":25,
+            "type":"string",
+            "description":"Code that indicates the feeder system from which an invoice is created. The valid values are defined in the SOURCE lookup type. Values can be reviewed using the Setup and Maintenance work area and the Manage Payables Lookups task.",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "InvoiceType":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The type of the invoice. The valid invoice types are Standard, Prepayment, Credit Memo, Debit Memo. The value can either be provided while creating the invoice or derived based on the invoice amount. The positive invoice amount is considered as Standard invoice and negative values are considered as Credit Memo. A list of accepted values is defined in the lookup type INVOICE TYPE and can be reviewed using the Setup and Maintenance work area, and the Manage Payables Lookups task.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice",
+                "dependencies":[
+                    "InvoiceType1"
+                ]
+            },
+            "x-queryable":true
+        },
+        "LastUpdateDate":{
+            "title":"Last Update Date",
+            "type":"string",
+            "description":"The date when the record was last updated.",
+            "format":"date-time",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "LastUpdateLogin":{
+            "title":"Last Update Login",
+            "maxLength":32,
+            "type":"string",
+            "description":"The session login associated to the user who last updated the record.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "LastUpdatedBy":{
+            "title":"Last Updated By",
+            "maxLength":64,
+            "type":"string",
+            "description":"The user who last updated the record.",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "LegalEntity":{
+            "title":"Legal Entity Name",
+            "maxLength":240,
+            "type":"string",
+            "description":"The name of the legal entity. The value can either be provided while creating an invoice or derived by the system.",
+            "nullable":false,
+            "x-hints":{
+                "controlType":"choice",
+                "dependencies":[
+                    "LegalEntityIdentifier"
+                ]
+            },
+            "x-queryable":true
+        },
+        "LegalEntityIdentifier":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The user-entered legal entity identifier that helps to uniquely identify a legal entity.",
+            "nullable":true,
+            "x-queryable":false,
+            "x-hints":{
+                "dependencies":[
+                    "LeLegalEntityId"
+                ]
+            }
+        },
+        "LiabilityDistribution":{
+            "type":"string",
+            "description":"The account combination to which liability is recorded. Payables uses the liability account combination when accounting entries are created for invoices. The value can either be provided while creating an invoice or populated by default from the Supplier Site Assignment or from the Default Distributions from Manage Common Options for Payables and Procurement options for the invoicing business unit.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "PaidStatus":{
+            "title":"Paid Status",
+            "maxLength":80,
+            "type":"string",
+            "description":"The status indicating whether an invoice is paid. The default value is set to Unpaid.",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "Party":{
+            "title":"Name",
+            "maxLength":360,
+            "type":"string",
+            "description":"An entity that can enter into business relationships with other entities and that submits invoices or other requests for payment. In some cases, goods or services or both are provided in return for payment.",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "PartySite":{
+            "title":"Site Name",
+            "maxLength":240,
+            "type":"string",
+            "description":"Unique identity of the party site.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "PayAloneFlag":{
+            "title":"Pay Alone",
+            "maxLength":255,
+            "type":"boolean",
+            "description":"Indicates whether the invoice is to be paid with its own payment document without including other invoices for the supplier. The value can either be provided while creating an invoice or populated by default from the Supplier Site or Address or Profile level payment attributes. The default value is false.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "PayGroup":{
+            "title":"Pay Group",
+            "maxLength":255,
+            "type":"string",
+            "description":"Groups a category of supplier invoices for a single pay run. Examples include employees, merchandise, nonmerchandise, government, domestic, and international. The value can either be provided while creating an invoice or populated by default from the Supplier Site or from the Manage Invoice Options for the invoicing business unit. You can also update the pay group on the invoice. A list of accepted values is defined in the lookup type PAY GROUP and can be reviewed using the Setup and Maintenance work area, and the Manage Payables Lookups task.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice"
+            },
+            "x-queryable":true
+        },
+        "PaymentCurrency":{
+            "title":"Payment Currency",
+            "maxLength":15,
+            "type":"string",
+            "description":"The currency used to make a payment. The value can either be provided while creating an invoice or populated by default from the Supplier Site or from the Manage Invoice Options for the invoicing business unit.",
+            "nullable":false,
+            "x-queryable":true
+        },
+        "PaymentMethod":{
+            "title":"Name",
+            "maxLength":100,
+            "type":"string",
+            "description":"Indicates how the first party payer is going to make the payment for the invoice. Examples include check, cash, and credit. The value can either be provided while creating an invoice or populated by default based on the Payment Method Default Basis setup in the Manage Disbursement System Options.",
+            "nullable":false,
+            "x-hints":{
+                "controlType":"choice",
+                "dependencies":[
+                    "PaymentMethodCode"
+                ]
+            },
+            "x-queryable":true
+        },
+        "PaymentMethodCode":{
+            "title":"Payment Method",
+            "maxLength":30,
+            "type":"string",
+            "description":"The user-entered payment method code that helps to uniquely identify a payment method.",
+            "nullable":false,
+            "x-queryable":true
+        },
+        "PaymentReason":{
+            "title":"Name",
+            "maxLength":80,
+            "type":"string",
+            "description":"The codes provided by the government or central bank of a country. These codes provide the payment system or bank with additional details about the reason for the payment, and are used for regulatory reporting purposes. The value can either be provided while creating an invoice or populated by default from the Supplier Site or Address or Profile level payment attributes.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"default",
+                "dependencies":[
+                    "PaymentReasonCode"
+                ]
+            },
+            "x-queryable":true
+        },
+        "PaymentReasonCode":{
+            "title":"Payment Reason",
+            "maxLength":30,
+            "type":"string",
+            "description":"The user-entered payment reason code that helps to uniquely identify a payment reason.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "PaymentReasonComments":{
+            "maxLength":240,
+            "type":"string",
+            "description":"The comments that indicate the reason for creating the payment. The value can either be provided while creating an invoice or populated by default from the Supplier Site or Address or Profile level payment attributes.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "PaymentTerms":{
+            "title":"Payment Terms",
+            "maxLength":50,
+            "type":"string",
+            "description":"The payment terms used to calculate installments and to calculate due dates, discount dates, and discount amounts for each invoice. The value can either be provided while creating an invoice or populated by default from the Supplier Site or from the Manage Invoice Options for the invoicing business unit.",
+            "nullable":false,
+            "x-hints":{
+                "controlType":"choice"
+            },
+            "x-queryable":true
+        },
+        "ProcurementBU":{
+            "title":"Procurement BU",
+            "type":"string",
+            "description":"The procurement business unit that is associated to the supplier site on the invoice and helps to uniquely identify a supplier site.",
+            "nullable":true,
+            "x-queryable":false,
+            "x-hints":{
+                "controlType":"choice"
+            }
+        },
+        "ProductTable":{
+            "maxLength":30,
+            "type":"string",
+            "description":"The name of the product source table used to generate the invoice.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "PurchaseOrderNumber":{
+            "title":"Order",
+            "maxLength":30,
+            "type":"string",
+            "description":"The purchase order document number that is matched to the invoice.",
+            "nullable":true,
+            "x-hints":{
+                "dependencies":[
+                    "BusinessUnit",
+                    "Supplier"
+                ]
+            },
+            "x-queryable":true
+        },
+        "ReferenceKeyFive":{
+            "maxLength":150,
+            "type":"string",
+            "description":"The primary key information that uniquely identifies the record in another product's view.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "ReferenceKeyFour":{
+            "maxLength":150,
+            "type":"string",
+            "description":"The primary key information that uniquely identifies the record in another product's view.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "ReferenceKeyOne":{
+            "maxLength":4000,
+            "type":"string",
+            "description":"The primary key information that uniquely identifies the record in another product's view.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "ReferenceKeyThree":{
+            "maxLength":150,
+            "type":"string",
+            "description":"The primary key information that uniquely identifies the record in another product's view.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "ReferenceKeyTwo":{
+            "maxLength":150,
+            "type":"string",
+            "description":"The primary key information that uniquely identifies the record in another product's view.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "RemittanceMessageOne":{
+            "maxLength":150,
+            "type":"string",
+            "description":"Remittance message provided for payment processing. You can provide the information during invoice creation or update it later.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "RemittanceMessageThree":{
+            "maxLength":150,
+            "type":"string",
+            "description":"Remittance message provided for payment processing. You can provide the information during invoice creation or update it later.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "RemittanceMessageTwo":{
+            "maxLength":150,
+            "type":"string",
+            "description":"Remittance message provided for payment processing. You can provide the information during invoice creation or update it later.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "Requester":{
+            "title":"Name",
+            "maxLength":240,
+            "type":"string",
+            "description":"The name of the person who requested the goods or services. The requester is used by the Invoice Approval Workflow process to generate the list of approvers.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice",
+                "dependencies":[
+                    "RequesterId"
+                ]
+            },
+            "x-queryable":true
+        },
+        "RequesterId":{
+            "title":"Requester",
+            "type":"integer",
+            "description":"The unique requester identifier.",
+            "format":"int64",
+            "nullable":true,
+            "x-hints":{
+                "precision":18
+            },
+            "x-queryable":true
+        },
+        "RoutingAttribute1":{
+            "maxLength":270,
+            "type":"string",
+            "description":"Captures additional attributes information that may have been used for routing payables invoice images.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "RoutingAttribute2":{
+            "maxLength":270,
+            "type":"string",
+            "description":"Captures additional attributes information that may have been used for routing payables invoice images.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "RoutingAttribute3":{
+            "maxLength":270,
+            "type":"string",
+            "description":"Captures additional attributes information that may have been used for routing payables invoice images.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "RoutingAttribute4":{
+            "maxLength":270,
+            "type":"string",
+            "description":"Captures additional attributes information that may have been used for routing payables invoice images.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "RoutingAttribute5":{
+            "maxLength":270,
+            "type":"string",
+            "description":"Captures additional attributes information that may have been used for routing payables invoice images.",
+            "nullable":true,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "SettlementPriority":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The priority with which the financial institution or payment system should settle the payment for this document. A list of accepted values is defined in the lookup type IBY_SETTLEMENT_PRIORITY. Accepted values can be reviewed using the Setup and Maintenance work area and the Manage Standard Lookups task.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice"
+            },
+            "x-queryable":true
+        },
+        "Supplier":{
+            "title":"Name",
+            "maxLength":360,
+            "type":"string",
+            "description":"The supplier name on the invoice. The value must be provided while creating the invoice. It cannot be updated once the invoice is created.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice"
+            },
+            "x-queryable":true
+        },
+        "SupplierIBAN":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The alphanumeric sequence that conforms to the ISO standard for uniquely identifying a bank account number internationally. The standard IBAN carries all the routing information needed to transfer a payment from one bank to another anywhere in the world. The value provided in the payload helps to uniquely identify a bank account. If you provide values for multiple bank account-related attributes, such as Bank Account, Supplier IBAN, or External Bank Account ID, then all the information provided will be validated.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "SupplierNumber":{
+            "title":"Supplier Number",
+            "maxLength":30,
+            "type":"string",
+            "description":"The unique number to identify the supplier.",
+            "nullable":false,
+            "readOnly":true,
+            "x-queryable":true
+        },
+        "SupplierSite":{
+            "title":"Site",
+            "maxLength":240,
+            "type":"string",
+            "description":"The name of the physical location of the supplier from where the goods and services are rendered. The value must be provided during creation action. It cannot be updated once the invoice is created.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice",
+                "dependencies":[
+                    "BusinessUnit",
+                    "ProcurementBU",
+                    "Supplier"
+                ]
+            },
+            "x-queryable":true
+        },
+        "SupplierTaxRegistrationNumber":{
+            "title":"Registration Number",
+            "maxLength":50,
+            "type":"string",
+            "description":"The third party tax registration number. The value can either be provided while creating an invoice or populated by default from the supplier.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice"
+            },
+            "x-queryable":true
+        },
+        "TaxationCountry":{
+            "title":"Territory Name",
+            "maxLength":80,
+            "type":"string",
+            "description":"The country where the transaction took place for taxation purposes. Oracle Fusion Tax sets the context of other tax drivers such as the Product Fiscal Classification based on the value of this field. The value can either be provided when creating an invoice or it's populated by default from the setup.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice"
+            },
+            "x-queryable":true
+        },
+        "TermsDate":{
+            "title":"Terms Date",
+            "type":"string",
+            "description":"The date used with payment terms to calculate installment along with due date and discount dates. The value can either be provided while creating an invoice or derived based on the Terms Date Basis option from the Supplier Site or from the Manage Invoice Options for the invoicing business unit.",
+            "format":"date",
+            "nullable":false,
+            "x-queryable":true
+        },
+        "UniqueRemittanceIdentifier":{
+            "maxLength":256,
+            "type":"string",
+            "description":"The unique identifier for a remittance. Contains reference information for a payment.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "UniqueRemittanceIdentifierCheckDigit":{
+            "maxLength":2,
+            "type":"string",
+            "description":"A check digit used to validate the unique remittance identifier.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "ValidationStatus":{
+            "maxLength":255,
+            "type":"string",
+            "description":"The status indicating the state of the invoice in the validation process. The default value is set to Not Validated.",
+            "nullable":true,
+            "x-hints":{
+                "controlType":"choice",
+                "dependencies":[
+                    "PrepayValidationStatus",
+                    "ValidationStatus1"
+                ]
+            },
+            "x-queryable":true
+        },
+        "VoucherNumber":{
+            "title":"Voucher Number",
+            "maxLength":50,
+            "type":"string",
+            "description":"The user-entered voucher number when manual document sequential numbering is enabled.",
+            "nullable":true,
+            "x-queryable":true
+        },
+        "appliedPrepayments":{
+            "title":"Applied Prepayments",
+            "type":"array",
+            "description":"The applied prepayments resource is used to view the prepayments that are applied to an invoice.",
+            "items":{
+                "$ref":"#/components/schemas/invoices-appliedPrepayments-item-response"
+            }
+        },
+        "attachments":{
+            "title":"Attachments",
+            "type":"array",
+            "description":"The attachments resource for a payables invoice is used to manage attachments that the user has attached to the invoice header.",
+            "items":{
+                "$ref":"#/components/schemas/invoices-attachments-item-response"
+            }
+        },
+        "availablePrepayments":{
+            "title":"Available Prepayments",
+            "type":"array",
+            "description":"The available prepayments resource is used to view the available prepayment that can be applied to invoices.",
+            "items":{
+                "$ref":"#/components/schemas/invoices-availablePrepayments-item-response"
+            }
+        },
+        "invoiceDff":{
+            "title":"Invoices Descriptive Flexfields",
+            "type":"array",
+            "description":"The payables invoices descriptive flexfields resource is used to manage details about the descriptive flexfield references for an invoice.",
+            "items":{
+                "$ref":"#/components/schemas/invoices-invoiceDff-item-response"
+            },
+            "x-cardinality":"1"
+        },
+        "invoiceGdf":{
+            "title":"Invoices Global Descriptive Flexfields",
+            "type":"array",
+            "description":"The payables invoices global descriptive flexfields resource is used to manage details about the global descriptive flexfield references for an invoice.",
+            "items":{
+                "$ref":"#/components/schemas/invoices-invoiceGdf-item-response"
+            },
+            "x-cardinality":"1"
+        },
+        "invoiceInstallments":{
+            "title":"Invoice Installments",
+            "type":"array",
+            "description":"The payables invoice installments resource is used to manage details about the payment due dates, amounts, and other payment information. An invoice can have one or more installments.",
+            "items":{
+                "$ref":"#/components/schemas/invoices-invoiceInstallments-item-response"
+            }
+        },
+        "invoiceLines":{
+            "title":"Invoice Lines",
+            "type":"array",
+            "description":"The payables invoice lines resource is used to manage details about goods and services, which includes freight, and miscellaneous charges that can be allocated to item lines. It also captures details necessary for integration with applications, such as Oracle Fusion Assets.",
+            "items":{
+                "$ref":"#/components/schemas/invoices-invoiceLines-item-response"
+            }
+        },
+        "links":{
+            "title":"Links",
+            "type":"array",
+            "description":"The link relations associated with the resource instance.",
+            "items":{
+                "$ref":"#/components/schemas/link"
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "InvoiceNumber": "AND_Unmatched_Invoice",
+    "InvoiceCurrency": "USD",
+    "InvoiceAmount": 2212.75,
+    "InvoiceDate": "2019-02-01",
+    "BusinessUnit": "Vision Operations",
+    "Supplier": "Advanced Network Devices",
+    "SupplierSite": "FRESNO",
+    "Requester": "Johnson,Mary",
+    "InvoiceGroup": "01Feb2019",
+    "Description": "Office Supplies",
+   
+    "attachments": [{
+        "Type": "File",
+        "FileName": "REST Invoice related attachment.txt",
+        "Title": "REST Invoice related attachment",
+        "Description": "REST Invoice related attachment",
+        "Category": "From Supplier",
+        "FileUrl": "/content/conn/ContentRepository/uuid/dDocID%3a407437?XFND_SCHEME_ID=1&XFND_CERT_FP=01A8AFB3277D68B1E0D8CFC44C59578044ADBAE0&XFND_RANDOM=2869500116500884411&XFND_EXPIRES=1536137883284&XFND_SIGNATURE=j1ybpNkr471dYeRg85cBp-j~nC38M-jZhC048FSZs13sKO5O9uEmyObHD1nwCO6vg2BB5msYya2tBqfYiZBE380SWm4xLWF6XEgl23nNnYpqfV~36JNI3b~gXHSP-7yrs5qB~MDT7rPRDi9eGUUByuXtkV1Qb~QZdnSxBYiTPl~5GKLPgRygYWjiq1VykWln0X52US98VW4G5aS6KVewwAPJsusw51c14Z1tkAkbX5No08eQgw2fCEft0syNgzSkWcu9r04681rv-JMZW8tv43waaI3ZDefbysjoo7vXWjYjcwKx~1p0~OMBfQc2Qp~Te1hvTgjoOy8EdMtnz1FmJA__&ld=407437&download"
+   
+    }],
+   
+    "invoiceDff": [{
+        "test1": "Urgent"
+    }],
+   
+    "invoiceInstallments": [{
+            "InstallmentNumber": 1,
+            "DueDate": "2019-02-10",
+            "GrossAmount": 1100,
+            "invoiceInstallmentDff": [{
+                "_Payment__mode": "W"
+            }]
+        },
+        {
+            "InstallmentNumber": 2,
+            "DueDate": "2019-02-25",
+            "GrossAmount": 1212.75,
+            "invoiceInstallmentDff": [{
+                "_Payment__mode": "W"
+            }]
+        }
+    ],
+   
+    "invoiceLines": [{
+        "LineNumber": 1,
+        "LineAmount": 2112.75,
+   
+        "invoiceDistributions": [{
+            "DistributionLineNumber": 1,
+            "DistributionLineType": "Item",
+            "DistributionAmount": 2112.75,
+            "DistributionCombination": "01-420-7110-0000-000"
+   
+        }]
+        },
+        {
+            "LineNumber": 2,
+            "LineType": "Freight",
+            "LineAmount": 100,
+            "ProrateAcrossAllItemsFlag": true
+        }]
+   
+}

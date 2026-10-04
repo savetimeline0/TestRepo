@@ -1,0 +1,89 @@
+{
+  "invoices": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "invoiceNumber": "INV-2026-001",
+      "invoiceDate": "2026-05-15",
+      "dueDate": "2026-06-15",
+      "header": {
+        "vendorId": "VENDOR-001",
+        "vendorName": "ACME Corporation",
+        "vendorEmail": "invoices@acme.com",
+        "vendorPhone": "+1-555-0100",
+        "vendorAddress": "123 Business Ave, New York, NY 10001",
+        "invoiceNotes": "Payment terms: Net 30"
+      },
+      "lines": [
+        {
+          "id": "line-001",
+          "description": "Software Licensing - Annual",
+          "quantity": 1,
+          "unitPrice": 5000,
+          "lineAmount": 5000
+        },
+        {
+          "id": "line-002",
+          "description": "Consulting Services",
+          "quantity": 40,
+          "unitPrice": 150,
+          "lineAmount": 6000
+        },
+        {
+          "id": "line-003",
+          "description": "Support & Maintenance",
+          "quantity": 1,
+          "unitPrice": 2000,
+          "lineAmount": 2000
+        }
+      ],
+      "summary": {
+        "subtotal": 13000,
+        "taxRate": 0.08,
+        "taxAmount": 1040,
+        "total": 14040
+      },
+      "status": "pending",
+      "createdAt": "2026-05-15T10:30:00Z",
+      "updatedAt": "2026-05-15T10:30:00Z"
+    },
+    {
+      "id": "df5c9aa4-c5b3-4342-8bf6-4f3af7c8bb9c",
+      "invoiceNumber": "INV-2026-002",
+      "invoiceDate": "2026-05-16",
+      "dueDate": "2026-06-16",
+      "header": {
+        "vendorId": null,
+        "vendorName": "Tech Solutions Inc",
+        "vendorEmail": "billing@techsolutions.com",
+        "vendorPhone": null,
+        "vendorAddress": null,
+        "invoiceNotes": ""
+      },
+      "lines": [
+        {
+          "id": "ccab0868-ddaa-45e5-90ef-8b74cc455c0b",
+          "description": "Software",
+          "quantity": 1,
+          "unitPrice": 5000,
+          "lineAmount": 5000
+        },
+        {
+          "id": "15e9fe2f-46ac-4a5c-ae77-de7253cce3c9",
+          "description": "Support",
+          "quantity": 50,
+          "unitPrice": 200,
+          "lineAmount": 10000
+        }
+      ],
+      "summary": {
+        "subtotal": 15000,
+        "taxRate": 0.08,
+        "taxAmount": 1200,
+        "total": 16200.000000000002
+      },
+      "status": "pending",
+      "createdAt": "2026-05-16T09:47:55.319Z",
+      "updatedAt": "2026-05-16T09:47:55.319Z"
+    }
+  ]
+}
